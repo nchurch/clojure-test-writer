@@ -1,0 +1,18 @@
+Usage:
+use t to enter code at REPL, s to save it as a test to a file:
+
+=> (t (+ 1 5))
+6
+=> (s)
+
+writes
+(clojure.contrib.test-is/is (clojure.core/= #^#=(clojure.lang.PersistentArrayMap/create {:line 30}) (+ 1 5) 
+6))
+to test file
+
+(s result)
+will create a test from the last t'd expression asserting expr = result.
+
+Run (load-file) on the testfile to test all the tests
+
+Missing features: different files by namespace, integration with existing test frameworks.
