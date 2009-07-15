@@ -6,13 +6,16 @@ use t to enter code at REPL, s to save it as a test to a file:
 => (s)
 
 writes
-(clojure.contrib.test-is/is (clojure.core/= #^#=(clojure.lang.PersistentArrayMap/create {:line 30}) (+ 1 5) 
-6))
+(clojure.contrib.test-is/is (clojure.core/= (+ 1 5) 6))
 to test file
 
-(s result)
-will create a test from the last t'd expression asserting expr = result.
+Pass an argument to s to specify the result of the test;
+(s 7) would write
+(clojure.contrib.test-is/is (clojure.core/= (+ 1 5) 7))
 
-Run (load-file) on the testfile to test all the tests
+Call (load-file) on the test file to run all the tests; the default test file 
+is ~/.test-writer/test, which can be changed by setting *testfile*.
+(The expression and value to be written by s are saved by t in 
+*last-expr* and *last-val*, and can be read by calling (r).) 
 
 Missing features: different files by namespace, integration with existing test frameworks.
